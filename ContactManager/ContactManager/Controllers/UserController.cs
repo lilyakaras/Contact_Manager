@@ -89,7 +89,7 @@ namespace ContactManager.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(user.Id))
+                    if (!UserExists(user.Id))
                     {
                         return View("NotExists");
                     }
@@ -125,7 +125,7 @@ namespace ContactManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ProductExists(int id)
+        private bool UserExists(int id)
         {
             return db.Users.Any(e => e.Id == id);
         }
